@@ -7,6 +7,8 @@ import xmlrpc.client
 from telethon import TelegramClient, events
 from telethon.tl.types import InputFile
 from datetime import timedelta
+subprocess.Popen(["aria2c", "--enable-rpc", "--rpc-listen-all=false", "--rpc-allow-origin-all", f"--rpc-secret={ARIA2C_SECRET}"])
+time.sleep(2)  # Give it a moment to start
 
 # === Bot Credentials ===
 api_id = 22716138
