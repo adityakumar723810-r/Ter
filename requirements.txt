@@ -1,2 +1,4 @@
-telethon 
+telethon
 requests
+flask
+gunicorn
