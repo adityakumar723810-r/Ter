@@ -7,9 +7,6 @@ import xmlrpc.client
 from telethon import TelegramClient, events
 from telethon.tl.types import InputFile
 from datetime import timedelta
-subprocess.Popen(["aria2c", "--enable-rpc", "--rpc-listen-all=false", "--rpc-allow-origin-all", f"--rpc-secret={ARIA2C_SECRET}"])
-time.sleep(2)  # Give it a moment to start
-
 # === Bot Credentials ===
 api_id = 22716138
 api_hash = '24aa97b83dc56cbde6cb572dbfa6feca'
@@ -22,6 +19,12 @@ print("[STARTED] Terabox Downloader Bot is running...")
 ARIA2C_SECRET = "token"
 ARIA2C_RPC = "http://localhost:6800/rpc"
 
+# Start aria2c with RPC
+subprocess.Popen([
+    "aria2c", "--enable-rpc", "--rpc-listen-all=false", "--rpc-allow-origin-all",
+    f"--rpc-secret={ARIA2C_SECRET}"
+])
+time.sleep(2)  # Give it a moment to start
 async def download_with_progress(url, filename, msg):
     # Start aria2c with RPC
     subprocess.Popen([
